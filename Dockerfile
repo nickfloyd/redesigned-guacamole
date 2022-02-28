@@ -1,9 +1,9 @@
 FROM ruby:2.7.2
 
-WORKDIR /app
-COPY . .
-
+COPY Gemfile .
 RUN bundle install
+
+#COPY *.rb .
 
 EXPOSE 3000
 
