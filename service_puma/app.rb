@@ -13,6 +13,11 @@ require 'faraday/net_http'
 set :port, 3000
 set :bind, '0.0.0.0'
 
+faraday = Faraday.new(url: "http://localhost:3000") do |f|
+  f.request :url_encoded
+  f.adapter :net_http # or :httpclient, :excon, :typhoeus, etc
+end
+
 get '/slow' do
   # Do a slow (but cancellable) operation.
   sleepy = Thread.current
@@ -35,7 +40,7 @@ get '/delegate' do
   # TODO: implement graceful async cancellation in Faraday.
   cur = Thread.current
   response = with_cancel(-> { puts "delegation cancelled"; cur.raise Exception.new "Faraday request cancelled" }) do
-    Faraday.get('http://localhost:3000/slow')
+    faraday.get('/slow')
   end
   "/slow responded with " + response.body.to_s
 end
