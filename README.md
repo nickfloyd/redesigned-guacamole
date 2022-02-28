@@ -2,18 +2,36 @@
 Psudo code / Prototype of loadshedding in ruby
 
 
-# RUN 
+### RUN 
 
-Basic
+`bundle install`
+
+To manually run you will need to spin up both services
+
+`cd service_one`  
+`ruby app.rb`  
+
+`cd service_two`  
+`ruby app.rb`  
+
+----
+#### Basic execution
 
 `ruby app.rb`
 
-On Puma
+----
+#### On Puma
 
-`ruby app.rb -s Puma`
+Puma hosts by default and the configuration can be found in `config/puma.rb in both services.
 
-In Docker
+-----
+#### In Docker
 
-`docker build -t loadshedding .`
+TODO
 
-`docker run --rm -it -p 3000:3000 loadshedding`
+------------
+
+### Endpoints
+
+TODO
+
