@@ -5,9 +5,8 @@ threads threads_count, threads_count
 
 preload_app!
 
+# Change to a rack config if needed
 rackup DefaultRackup
-port ENV.fetch('PORT') { 3000 }
-workers ENV.fetch('WORKERS') { 2 }.to_i
 
-# Load metrics plugin
-plugin 'metrics'
+port ENV.fetch('PORT') { 3001 }
+workers ENV.fetch('WORKERS') { 2 }.to_i
