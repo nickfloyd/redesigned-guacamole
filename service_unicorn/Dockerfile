@@ -9,5 +9,5 @@ COPY . .
 
 EXPOSE 3001
 
-CMD ./start_unicorn
+CMD ./start_local
 

@@ -1,3 +1,5 @@
+# THIS IS WIP
+
 module Middleware
   # A simple waitable one-time event.
  # TODO: does this exist in a library?

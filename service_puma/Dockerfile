@@ -5,9 +5,9 @@ COPY Gemfile.lock .
 
 RUN bundle install
 
-COPY *.rb .
+COPY . .
 
 EXPOSE 3000
 
-CMD ruby app.rb -s puma
+CMD ./start_local
 

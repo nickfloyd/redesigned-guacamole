@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build -f Dockerfile --iidfile iid . && docker run -w $(pwd) -p 3000:3000 -v $(pwd):$(pwd) $(cat iid)

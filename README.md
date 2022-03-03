@@ -11,36 +11,35 @@ Because this is an experiment / prototype this source is fairly unstable and mig
 #### For Puma
 
 1. `$ cd service_puma`
-2. `$ bundle install`
-3. `$ ruby app.rb`
-
-Kill with: `ctrl + c`
-
-
-Alternatively docker can be used (there is currently a bug with the way the remote gem is being added):
-
-`$ docker build -f Dockerfile --iidfile iid . && docker run -w $(pwd) -p 3000:3000 -v $(pwd):$(pwd) $(cat iid)`  
-
-`$ chrome http://localhost:3000/slow`
-
-Kill with: `docker kill $(docker ps -q)`
-
-----
-#### For unicorn
-
-1. `$ cd service_unicorn`
-2. `$ ./start_unicorn`
+2. `$ ./start_local`
 
 Kill with: `ctrl + c`
 
 
 Alternatively docker can be used:
 
-`$ docker build -f Dockerfile --iidfile iid . && docker run -w $(pwd) -p 3001:3001 -v $(pwd):$(pwd) $(cat iid)`  
+`$ ./start_docker`  
 
-`$ chrome http://localhost:3001/slow`
+`$ chrome http://localhost:3000/slow`  
 
-Kill with: `./stop_docker_unicorn`
+Kill with: `./stop_docker`  
+
+----
+#### For unicorn
+
+1. `$ cd service_unicorn`  
+2. `$ ./start_local`  
+
+Kill with: `ctrl + c`  
+
+
+Alternatively docker can be used:
+
+`$ ./start_docker`  
+
+`$ chrome http://localhost:3001/slow`  
+
+Kill with: `./stop_docker`  
 
 ----
 ### SCENARIOS
