@@ -82,3 +82,16 @@ This makes sense in terms of duration deltas where there is a deadline being con
 Borrowing from the shed implementation, it can be approached in the same way only when a client disconnect is detected we explicitly close the connection when ActiveRecord/MySQL is in the request chain.
 
 ----
+
+#### Graceful cancellations with Faraday
+----
+
+The current implementation in both the puma and unicorn services use a hammer of sorts to deal with faraday.  
+
+Cancellation occurs because we throw in the with_cancel wrapper if a disconnect happens.
+
+Faraday's lowest-level middleware, [NetHTTP](https://github.com/github/faraday/blob/master/lib/faraday/adapter/net_http.rb#L38-L29), would need to be modified so that if the cancel event is signaled, [finish](https://ruby-doc.org/stdlib-3.1.0/libdoc/net/rdoc/Net/HTTP.html#method-i-finish) is called on the [http connection](https://github.com/github/faraday/blob/master/lib/faraday/adapter/net_http.rb#L29), causing the socket to be closed and [perform_request](https://github.com/github/faraday/blob/master/lib/faraday/adapter/net_http.rb#L37) to fail with an exception. 
+
+TODO: This needs to be prototyped via fork and gem ref change to use that fork.  
+
+----
