@@ -1,9 +1,11 @@
 FROM ruby:2.7.2
 
 COPY Gemfile .
+COPY Gemfile.lock .
+
 RUN bundle install
 
-#COPY *.rb .
+COPY *.rb .
 
 EXPOSE 3000
 
