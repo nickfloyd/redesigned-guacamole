@@ -59,6 +59,7 @@ class CancelMiddleware
 
   def call(env)
     # Grab the client TCPSocket (here we assume a Puma server).
+    # NOTE this is the delta between puma and unicorn.
     socket = env["puma.socket"]
 
     # Create a cancellation event for this request.

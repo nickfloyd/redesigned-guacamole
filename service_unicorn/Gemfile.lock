@@ -1,14 +1,29 @@
+GIT
+  remote: https://github.com/nickfloyd/cancellation.git
+  revision: e12f664b75e1efa804df67e27bebaeb15d88668c
+  branch: main
+  specs:
+    cancellation (0.0.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.1.3)
+    faraday (2.2.0)
+      faraday-net_http (~> 2.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (2.0.1)
+    kgio (2.11.4)
+    method_source (1.0.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.5.8)
-    puma (5.6.2)
-      nio4r (~> 2.0)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     rack (2.2.3)
     rack-protection (2.2.0)
       rack
+    raindrops (0.20.0)
     ruby2_keywords (0.0.5)
     sinatra (2.2.0)
       mustermann (~> 1.0)
@@ -16,13 +31,20 @@ GEM
       rack-protection (= 2.2.0)
       tilt (~> 2.0)
     tilt (2.0.10)
+    unicorn (6.1.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
 
 DEPENDENCIES
-  puma
+  cancellation (= 0.0.9)!
+  faraday
+  pry
   sinatra
+  unicorn
 
 BUNDLED WITH
    2.3.8

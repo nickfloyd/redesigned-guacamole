@@ -1,0 +1,3 @@
+#!/bin/bash
+docker kill $(docker ps -q)
+rm ./shared/pids/unicorn.pid
